@@ -31,11 +31,6 @@ if ! id kapacitor >/dev/null 2>&1; then
 fi
 chmod a+rX $BIN_DIR/kapacitor*
 
-mkdir -p $LOG_DIR
-chown -R -L kapacitor:kapacitor $LOG_DIR
-mkdir -p $DATA_DIR
-chown -R -L kapacitor:kapacitor $DATA_DIR
-
 test -f /etc/default/kapacitor || touch /etc/default/kapacitor
 
 # Distribution-specific logic

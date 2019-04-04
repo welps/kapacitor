@@ -21,6 +21,8 @@ os.environ["GO15VENDOREXPERIMENT"] = "1"
 
 # PACKAGING VARIABLES
 PACKAGE_NAME = "kapacitor"
+USER = "kapacitor"
+GROUP = "kapacitor"
 INSTALL_ROOT_DIR = "/usr/bin"
 LOG_DIR = "/var/log/kapacitor"
 DATA_DIR = "/var/lib/kapacitor"
@@ -60,6 +62,8 @@ fpm_common_args = "-f -s dir --log error \
  --config-files {} \
  --config-files {} \
  --directories {} \
+ --rpm-user {} \
+ --rpm-group {} \
  --description \"{}\"".format(
         VENDOR,
         PACKAGE_URL,
@@ -76,6 +80,8 @@ fpm_common_args = "-f -s dir --log error \
                          os.path.dirname(SCRIPT_DIR[1:]),
                          os.path.dirname(DEFAULT_CONFIG),
                     ]),
+        USER,
+        GROUP,
         DESCRIPTION)
 
 targets = {
